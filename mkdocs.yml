@@ -1,0 +1,95 @@
+#file: noinspection SpellCheckingInspection
+# Project Information
+site_name: Riddle Docs
+site_description: Riddle 语言的技术手册
+site_author: wangziwenhk
+#site_url: https://wangziwenhk.github.io/riddle-docs/
+site_url: https://127.0.0.1/riddle-docs/
+strict: true
+copyright: Copyright &copy; 2024 - 2024 wangziwenhk
+
+nav:
+  - 简介:
+      - 开始: index.md
+      - 如何贡献: introduction/contribution.md
+
+theme:
+  name: material
+  font: false
+  language: zh
+  custom_dir: overrides
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - search.suggest
+    - search.highlight
+    - search.share
+    - navigation.tabs
+    - navigation.footer
+    - navigation.instant
+    - navigation.instant.prefetch
+    - navigation.instant.progress
+    - navigation.instant.preview
+    - navigation.tracking
+    - navigation.path
+    - navigation.prune
+    - navigation.top
+    - header.autohide
+    - announce.dismiss
+    - toc.follow
+    - content.tabs.link
+  plugins:
+    - search:
+      title: '搜索'
+    - livereload
+    - latex
+    - optimize
+    - markdown.extensions.extra
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://www.github.com/wangziwenhk
+    - icon: fontawesome/brands/bilibili
+      link: https://space.bilibili.com/1397454461
+  comments:
+    provider: giscus
+    mapping: pathname
+    reactions: true
+    emit_metadata: true
+    theme: light
+    lang: zh
+
+extra_css:
+  - extra/css/extra.css
+
+extra_javascript:
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.details
+  - admonition
+  - attr_list
+  - md_in_html
+  - toc:
+      title: '目录'
+      permalink: true
