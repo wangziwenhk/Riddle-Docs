@@ -12,6 +12,13 @@ nav:
   - 简介:
       - 开始: index.md
       - 如何贡献: introduction/contribution.md
+  - 对象与变量:
+      - 对象: object/objects.md
+  - 实现:
+      - 语句:
+          - realization/stmt/index.md
+          - 特殊语句: realization/stmt/special.md
+          - 字面量和常量: realization\stmt\constant.md
 
 theme:
   name: material
@@ -39,6 +46,7 @@ theme:
     - navigation.instant.prefetch
     - navigation.instant.progress
     - navigation.instant.preview
+    - navigation.indexes
     - navigation.tracking
     - navigation.path
     - navigation.prune
@@ -68,9 +76,6 @@ extra:
     emit_metadata: true
     theme: light
     lang: zh
-
-extra_css:
-  - extra/css/extra.css
 
 extra_javascript:
   - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
