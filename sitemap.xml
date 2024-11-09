@@ -2,14 +2,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://127.0.0.1/riddle-docs/</loc>
-         <lastmod>2024-10-24</lastmod>
+         <lastmod>2024-11-09</lastmod>
     </url>
     <url>
          <loc>https://127.0.0.1/riddle-docs/introduction/contribution/</loc>
-         <lastmod>2024-10-24</lastmod>
+         <lastmod>2024-11-09</lastmod>
     </url>
     <url>
          <loc>https://127.0.0.1/riddle-docs/object/objects/</loc>
-         <lastmod>2024-10-24</lastmod>
+         <lastmod>2024-11-09</lastmod>
+    </url>
+    <url>
+         <loc>https://127.0.0.1/riddle-docs/realization/stmt/</loc>
+         <lastmod>2024-11-09</lastmod>
+    </url>
+    <url>
+         <loc>https://127.0.0.1/riddle-docs/realization/stmt/constant/</loc>
+         <lastmod>2024-11-09</lastmod>
+    </url>
+    <url>
+         <loc>https://127.0.0.1/riddle-docs/realization/stmt/special/</loc>
+         <lastmod>2024-11-09</lastmod>
     </url>
 </urlset>

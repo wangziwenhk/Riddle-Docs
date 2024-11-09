@@ -18,9 +18,11 @@
         <link rel="prev" href="../../introduction/contribution/">
       
       
+        <link rel="next" href="../../realization/stmt/">
+      
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.42">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.44">
     
     
       
@@ -43,8 +45,6 @@
     
       
     
-    
-      <link rel="stylesheet" href="../../extra/css/extra.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -213,6 +213,8 @@
         <a href="../.." class="md-tabs__link">
           
   
+    
+  
   简介
 
         </a>
@@ -233,10 +235,41 @@
         <a href="./" class="md-tabs__link">
           
   
+    
+  
   对象与变量
 
         </a>
       </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../realization/stmt/" class="md-tabs__link">
+          
+  
+    
+  
+  实现
+
+        </a>
+      </li>
+    
+  
+
     
   
 
@@ -282,6 +315,14 @@
   
     
     
+      
+        
+          
+        
+      
+        
+      
+    
     
       
       
@@ -325,6 +366,10 @@
   
   
     
+    
+      
+        
+      
     
     
       
@@ -521,6 +566,57 @@
   
 
     
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="../../realization/stmt/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    实现
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -655,24 +751,20 @@
 
 
 <h1 id="_1">对象<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<p>Riddle Language 的对象管理系统借鉴了 Rust 的所有权模型，实现了安全、高效的内存管理。
-它允许开发者通过所有权和借用机制明确控制对象的生命周期，避免常见的内存泄漏和悬空指针问题，
-同时不需要手动内存管理或垃圾回收。</p>
+<p>Riddle Language 的对象管理系统借鉴了 Rust 的所有权模型，实现了安全、高效的内存管理。 它允许开发者通过所有权和借用机制明确控制对象的生命周期，避免常见的内存泄漏和悬空指针问题， 同时不需要手动内存管理或垃圾回收。</p>
 <h2 id="ownership">所有权 (Ownership)<a class="headerlink" href="#ownership" title="Permanent link">&para;</a></h2>
-<p>在 Riddle 中，每个对象都遵循一个简单的所有权规则：每个对象在任何时刻只能有一个所有者。当所有权转移时，
-旧的所有者将失去对对象的访问权限。这种机制确保了内存安全，并防止对象被多次释放。</p>
+<p>在 Riddle 中，每个对象都遵循一个简单的所有权规则：每个对象在任何时刻只能有一个所有者。当所有权转移时， 旧的所有者将失去对对象的访问权限。这种机制确保了内存安全，并防止对象被多次释放。</p>
 <h3 id="_2">示例：所有权转移<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
 <span class="normal"><a href="#__codelineno-0-2">2</a></span>
 <span class="normal"><a href="#__codelineno-0-3">3</a></span>
-<span class="normal"><a href="#__codelineno-0-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">MyObject</span><span class="p">()</span><span class="w"> </span><span class="c1">// a 拥有这个对象的所有权</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="kd">var</span><span class="w"> </span><span class="nx">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">a</span><span class="w">              </span><span class="c1">// 所有权转移到 b, a 变为 null</span>
+<span class="normal"><a href="#__codelineno-0-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="kd">var</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">MyObject</span><span class="p">()</span><span class="w"> </span><span class="c1">// a 拥有这个对象的所有权</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="kd">var</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="w">              </span><span class="c1">// 所有权转移到 b, a 变为 null</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3"></a>
-<a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="kd">var</span><span class="w"> </span><span class="nx">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">a</span><span class="w">              </span><span class="c1">// 此时 c 获取 a 将会报错</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="kd">var</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="w">              </span><span class="c1">// 此时 c 获取 a 将会报错</span>
 </code></pre></div></td></tr></table></div>
 <h2 id="references">引用 (References)<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
-<p>与所有权不同，Riddle 支持通过引用使得让多个变量可以获取到同一对象的属性。<strong>注意，引用是对变量而言而不是对对象而言的</strong>，
-如果需要对某个对象进行追踪，请使用<a href="#绑定-bind">绑定</a></p>
+<p>与所有权不同，Riddle 支持通过引用使得让多个变量可以获取到同一对象的属性。<strong>注意，引用是对变量而言而不是对对象而言的</strong>， 如果需要对某个对象进行追踪，请使用<a href="#bind">绑定</a></p>
 <h3 id="_3">示例：引用<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
 <span class="normal"><a href="#__codelineno-1-2">2</a></span>
@@ -695,9 +787,7 @@
 <a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="kd">var</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="w">   </span><span class="c1">// 此时 c 中保存的是对 a 的引用</span>
 </code></pre></div></td></tr></table></div>
 <h2 id="bind">绑定 (Bind)<a class="headerlink" href="#bind" title="Permanent link">&para;</a></h2>
-<p>Riddle 提供了 绑定 的概念，用来在多个地方追踪同一个对象。与引用不同，绑定确保<strong>即使对象所有权发生变化，
-其他绑定的变量仍然可以访问这个对象</strong>。 绑定通过引用计数 ( 类似于 C++
-中的 <a href="https://zh.cppreference.com/w/cpp/memory/shared_ptr">std:shared_ptr</a> )</p>
+<p>Riddle 提供了 绑定 的概念，用来在多个地方追踪同一个对象。与引用不同，绑定确保<strong>即使对象所有权发生变化， 其他绑定的变量仍然可以访问这个对象</strong>。 绑定通过引用计数 ( 类似于 C++ 中的 <a href="https://zh.cppreference.com/w/cpp/memory/shared_ptr">std:shared_ptr</a> )</p>
 <h3 id="_5">示例：绑定<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
 <span class="normal"><a href="#__codelineno-3-2">2</a></span>
@@ -721,6 +811,7 @@
 <a id="__codelineno-4-4" name="__codelineno-4-4"></a>
 <a id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="c1">// 此时 c 中存的是对 a 中对象的绑定</span>
 </code></pre></div></td></tr></table></div>
+<p><strong>注：此处为实验性，后续可能会改变</strong></p>
 
 
 
@@ -773,6 +864,22 @@
             </div>
           </a>
         
+        
+          
+          <a href="../../realization/stmt/" class="md-footer__link md-footer__link--next" aria-label="下一页: 语句">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                语句
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
         
       </nav>
     
@@ -831,7 +938,7 @@
       <div class="md-progress" data-md-component="progress" role="progressbar"></div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["search.suggest", "search.highlight", "search.share", "navigation.tabs", "navigation.footer", "navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.instant.preview", "navigation.tracking", "navigation.path", "navigation.prune", "navigation.top", "header.autohide", "announce.dismiss", "toc.follow", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["search.suggest", "search.highlight", "search.share", "navigation.tabs", "navigation.footer", "navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.instant.preview", "navigation.indexes", "navigation.tracking", "navigation.path", "navigation.prune", "navigation.top", "header.autohide", "announce.dismiss", "toc.follow", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
       <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
